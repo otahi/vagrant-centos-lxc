@@ -27,16 +27,21 @@ service cgconfig restart && chkconfig cgconfig on
 curl -O -L https://gist.github.com/hagix9/3514296/raw/7f6bb4e291fad1dad59a49a5c02f78642bb99a45/lxc-centos
 cp lxc-centos /usr/share/lxc/templates/
 chmod +x /usr/share/lxc/templates/lxc-centos
+sed -i 's/curl -f/curl -Lf/g' /usr/share/lxc/templates/lxc-centos
 
 ### lxc vms
 lxc-create -t centos -n vm1 -f share/lxc-vm1.conf
+lxc-start -d -n vm2
+sleep 10
+
 lxc-create -t centos -n vm2 -f share/lxc-vm2.conf
 lxc-start -d -n vm1
-lxc-start -d -n vm2
 
 
 ### hints
-echo '##HINTS##'
-echo 'You can login to vm1 "sudo lxc-console -n vm1(with root/password)"'
-echo 'You can login to vm2 "sudo lxc-console -n vm2(with root/password)"'
+echo "##HINTS##"
+echo "You can login to vm1 (with root/password)"
+echo "% sudo lxc-console -n vm1"
+echo "You can login to vm2 (with root/password)"
+echo "% sudo lxc-console -n vm2"
 
