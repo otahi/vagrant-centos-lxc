@@ -1,0 +1,44 @@
+* vagrant-centos-lxc
+This project provides LinuxContainers(lxc) on a vagrant VM on a host
+
+** Purpose
+To provides LinuxContainers(lxc) on a vagrant VM on a host with Cent OS.
+
+** Backgrounds
+- On Mac(or Windows), it is difficult to use network tools in from linux.
+  - For example, iptables, openvswitch.
+- I usually use Cent OS, but lxc infomation usually for Ubuntu.
+
+** Layout
+LinuxContainers(lxc) on a vagrant VM on a host with Cent OS.
+
+#+ATTR_HTML: alt="layout. proxy can use upstrem proxy" width="100%"
+[[./images/layout.png]]
+
+** PreCondition to run
+- VirtualBox installed(upper 4.2.16)
+  - [[https://www.virtualbox.org/wiki/Downloads][Download VirtualBox]]
+- vagrant installed(uppper 1.2.0)
+  - [[http://downloads.vagrantup.com/][Vagrant Downloads]]
+- vagrant box has been set as "centos64-base"
+  - =%vagrant box add centos64-base http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130427.box=
+
+** How-to run
+- clone git repo
+  - =%git clone https://github.com/otahi/vagrant-centos-lxc.git=
+- vagrant up
+  - =%vagrant up=
+- wait
+- login to vagrant VM
+  - =%vagrant ssh=
+- login to lxc VMs
+  - =%sudo lxc-console -n vm1=
+  - =%sudo lxc-console -n vm2=
+
+** References
+- [[http://oss.fulltrust.co.jp/%3Fp%3D322][LXC用CentOSのテンプレート]]
+- 
+
+
+
+

@@ -1,0 +1,18 @@
+* How to compile lxc on CentOS
+
+- on Cent OS 6.4
+  - download lxc
+    - =$ wget http://lxc.sourceforge.net/download/lxc/lxc-0.9.0.tar.gz=
+    - =$cp lxc-0.9.0.tar.gz ~/rpmbuild/SOURCES=
+  - install relative packages
+    - =$ sudo yum install rpm-build=
+    - =$ sudo yum install lua-devel= 
+    - =$ sudo yum install python-devel=
+    - =$ sudo yum install docbook-utils-pdf=
+  - get spec file
+    - =$ tar xvf lxc-0.9.0.tar.gz lxc-0.9.0/lxc.spec=
+  - modify spec file (missing docbook2X will stop build)
+    - =$ sed -i 's/docbook2X//' lxc-0.9.0/lxc.spec=
+  - rpm build
+    - =$ rpmbuild -bb lxc-0.9.0/lxc.spec=
+
